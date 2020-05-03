@@ -10,14 +10,37 @@ for (let but of button) {
 	ggfunct(but)
 }
 
+let trim = {}
+
 function ggfunct(but){
-	console.log(but);
-	
 	but.onclick = function() {
-		but.classList.add('active');
-		setTimeout( function () { but.classList.remove('active'); }, 200);
+		const dataKey = but.getAttribute('data-key')
+		soundFunct(dataKey)
 	}
 }
+
+window.addEventListener('keydown', keySelect )
+function keySelect(event){
+	const dataKey = event.keyCode
+	soundFunct(dataKey)
+}
+
+
+function soundFunct(dataKey) {
+	const audio = document.querySelector(`audio[data-key='${dataKey}']`)
+	const trim = document.querySelector(`.but[data-key='${dataKey}']`)
+	if(!audio) {
+		console.log('pizza');
+		return;
+    }
+	audio.currentTime = 0
+    audio.play()
+	trim.classList.add('active')
+	setTimeout( function () { trim.classList.remove('active'); }, 200);
+}
+
+
+
 
 
 var x = window.matchMedia("(max-width: 600px)")
@@ -63,27 +86,3 @@ function myFunction(x) {
 		
 }}
 
-
-window.addEventListener('keydown', onmousemove )
-
-// window.addEventListener('keydown', playSound)
-// console.log(event.keyCode);
-
-
-// const textDisplay = document.querySelector('.textDisplay')
-
-function onmousemove(event) {
-    const audio = document.querySelector(`audio[data-key='${event.keyCode}']`)
-	if(!audio) {
-		console.log('pizza');
-		return;
-    }
-	
-	const trim = document.querySelector(`.but[data-key='${event.keyCode}']`)
-	// console.log(trim);
-	
-	audio.currentTime = 0
-    audio.play()
-	trim.classList.add('active')
-	setTimeout( function () { trim.classList.remove('active'); }, 200);
-}
