@@ -110,6 +110,7 @@ h3 {
 .arrowSpan{
     align-self: center;
     font-size: 90px ;
+    user-select: none;
     cursor: pointer;
 }
 
@@ -140,6 +141,7 @@ h3 {
     background: radial-gradient(circle at bottom left, var(--buttonRadial), var(--buttonRadial2));
     border-radius: 10px;
     transition: all 0.2s ease;
+    user-select: none;
     cursor: pointer;
 }
 
