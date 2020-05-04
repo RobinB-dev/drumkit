@@ -75,6 +75,14 @@ h3 {
     display: none;
 }
 
+.noSelect {
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
 
 .title{
     text-transform: uppercase;
@@ -110,8 +118,8 @@ h3 {
 .arrowSpan{
     align-self: center;
     font-size: 90px ;
-    user-select: none;
-    /* cursor: pointer; */
+    /* user-select: none; */
+    cursor: pointer;
 }
 
 .line{
@@ -141,8 +149,8 @@ h3 {
     background: radial-gradient(circle at bottom left, var(--buttonRadial), var(--buttonRadial2));
     border-radius: 10px;
     transition: all 0.2s ease;
-    user-select: none;
-    /* cursor: pointer; */
+    /* user-select: none; */
+    cursor: pointer;
 }
 
 .round{
