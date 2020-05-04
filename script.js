@@ -1,5 +1,5 @@
-// document.querySelector('.frou').addEventListener("click", function() {
-//     this.classList.toggle("active");
+// document.querySelector('.frou').addEventListener('click', function() {
+//     this.classList.toggle('active');
 //     console.log('pizza');
     
 //   });
@@ -30,7 +30,6 @@ function soundFunct(dataKey) {
 	const audio = document.querySelector(`audio[data-key='${dataKey}']`)
 	const trim = document.querySelector(`.but[data-key='${dataKey}']`)
 	if(!audio) {
-		console.log('pizza');
 		return;
     }
 	audio.currentTime = 0
@@ -43,46 +42,30 @@ function soundFunct(dataKey) {
 
 
 
-var x = window.matchMedia("(max-width: 600px)")
+var x = window.matchMedia('(max-width: 600px)')
 myFunction(x) // Call listener function at run time
 x.addListener(myFunction) // Attach listener function on state changes
 
 
 function myFunction(x) {
 	
-	// console.log(e);
-	// if (e === undefined) {
-	// 	console.log('fromage');
-		
-	// 	e = 0;
-	// 	return e
-	//   } 
-
-	const y = document.querySelectorAll(".frou");
-	const mem = []
+	// i really did everything i could but i didn't find a way to get the characters automatically and save them
+	const mem = ['A', 'Z', 'E', 'R', 'T', 'Y', 'Q', 'S', 'D', 'F', 'G', 'H', 'W', 'X', 'C', 'V', 'B', 'N']
+	const y = document.querySelectorAll('.frou');
 	
 	if (x.matches) { // If media query matches
 		var i;
 		for (i = 0; i < y.length; i++) {
-			mem.push (y[i].innerHTML);
-			console.log(y[i]);
-			
 			y[i].innerHTML = '•';
-			y[i].style.fontSize =  "50px";
+			y[i].style.fontSize =  '50px';
 		}
-		// y.innerHTML = '•' 
-		// console.log(y);
-		
-	} else if (x.matches && e == 1){
-		console.log('raclette');
-		
 	} else {
-		e = 0
-		// console.log('pizza');
 		for (i = 0; i < y.length; i++) {
 			mem.push (y[i].innerHTML);
 			y[i].innerHTML = mem[i];
+			y[i].style.fontSize =  '';
 		}
 		
 }}
+
 

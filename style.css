@@ -101,16 +101,32 @@ h2 {
 
 
 .frou{
+    width: 20px;
+    /* height: 45px; */
     font-weight: 700;
     color: #404040;
-    user-select: none; 
+    user-select: none;     
+    /* display: block; */
+}
+
+/* .dot{
+    width: 20px;
+    height: 20px;
+    border-radius: 10px;
+    background: #404040;
+    display: none;
+} */
+
+.textTest{
+    vertical-align: center;
+    text-align: center;
+    width: 200px;
+    height: 200px;
 }
 
 
-.svg {
-    background-repeat: no-repeat;
-    min-height: 200px;
-}
+
+
 
 .button.active{
     /* background: #353535; */
@@ -140,5 +156,12 @@ h2 {
     h2 {
         font-size: 28px;
     }
+    .frou{
+        padding-top: 7px;
+        /* display: none; */
+    }
+    /* .dot{
+        display: block;
+    } */
   }
   
