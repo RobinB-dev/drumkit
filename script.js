@@ -82,8 +82,10 @@ function changeKeys(mediaChange) {
 
 let o = 0
 
+const changeTitleh1 = document.querySelector('.h1')
 const changeTitleh2 = document.querySelector('.h2')
 const changeTitleh3 = document.querySelector('.h3')
+const changeTitleh4 = document.querySelector('.h4')
 const arrow = document.querySelectorAll(".arrowSpan")
 for (i = 0; i < arrow.length; i++) {	
 	
@@ -92,14 +94,18 @@ for (i = 0; i < arrow.length; i++) {
 		if(o%2 != 0)
 		{
 			document.documentElement.setAttribute('data-theme', 'dark');
+			changeTitleh1.style.display = 'none'
 			changeTitleh2.style.display = 'none'
 			changeTitleh3.style.display = 'block'
+			changeTitleh4.style.display = 'block'
 		}
 		else
 		{
 			document.documentElement.setAttribute('data-theme', 'light');
+			changeTitleh1.style.display = 'block'
 			changeTitleh2.style.display = 'block'
 			changeTitleh3.style.display = 'none'
+			changeTitleh4.style.display = 'none'
 		}
   });
 }

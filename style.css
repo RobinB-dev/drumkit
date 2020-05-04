@@ -74,8 +74,17 @@ h3 {
     /* transition: visibility 0s, opacity 0.5s linear; */
     display: none;
 }
+h4 {
+    /* font-size: 97px; */
+    font-size: 83px;
+    margin: 0 auto;
+    padding: 10px 0px;
+    display: none;
+    user-select: none; 
+}
 
 .noSelect {
+    -webkit-tap-highlight-color: transparent;
     -webkit-touch-callout: none;
     -webkit-user-select: none;
     -khtml-user-select: none;
@@ -243,6 +252,12 @@ h3 {
         font-size: 50px;
         margin: 0 auto;
         padding: 0px 0px 5px 0px;
+    }
+    h4 {
+        height: 57px;
+        font-size: 48px;
+        margin: 0 auto;
+        padding: 5px 0px 0px 0px;
     }
     .frou{
         padding-top: 8px;
