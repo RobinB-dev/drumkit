@@ -1,5 +1,41 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700;900&display=swap');
 
+:root{
+    --primaryColor: #989898;
+    --secondaryColor: #353535;
+    --tertiaryColor: #404040;
+    --accent1: #00ffd2;
+    --titleColor: #5e5e5e;
+    --titleShadow: #ffffff71;
+    --dotColor: #5e5e5e;
+    --dotShadow: #ffffff71;
+    --buttonBorder: #9b9b9b;
+    --roundBorder: #aaaaaa;
+    --buttonRadial: #919191;
+    --buttonRadial2: #a8a8a8;
+    --roundRadial: #cacaca;
+    --roundRadial2: #8a8a8a;
+    --black: #000000;
+}
+
+[data-theme="dark"]{
+    --primaryColor: #585858;
+    --secondaryColor: #353535;
+    --tertiaryColor: #404040;
+    --accent1: #ff00f4;
+    --titleColor: #1f1f1fb4;
+    --titleShadow: #474747;
+    --dotColor: #444444;
+    --dotShadow: #b6b6b68a;
+    --buttonBorder: #595959;
+    --roundBorder: #6e6e6e;
+    --buttonRadial: #525252;
+    --buttonRadial2: #656565;
+    --roundRadial: #a4a4a4;
+    --roundRadial2: #4a4a4a;
+    --black: #000000;
+}
+
 body{
     font-family: Comfortaa;
     display: flex;
@@ -8,28 +44,44 @@ body{
     align-items: center;
     text-align: center;
     margin: 0 auto;
-    background: #989898;
+    background: var(--primaryColor);
+    user-select: none; 
 }
 
 h1 {
-    font-size: 97px;
-    margin: 10px 0px;
+    /* font-size: 97px; */
+    font-size: 83px;
+    margin: 0 auto;
+    padding: 10px 0px;
     user-select: none; 
 }
 
 h2 {
-    font-size: 57px;
-    margin: 30px 0px 0px 0px ;
+    /* font-size: 70px; */
+    height: 70px;
+    font-size: 60px;
+    margin: 30px 0px 0px 0px;
+    padding-bottom: 10px;
     user-select: none; 
+}
+h3 {
+    height: 100px;
+    /* font-size: 70px; */
+    font-size: 88px;
+    margin: 0px 10px 10px 0px;
+    user-select: none; 
+    /* opacity: 0; */
+    /* transition: visibility 0s, opacity 0.5s linear; */
+    display: none;
 }
 
 
 .title{
     text-transform: uppercase;
     font: bold;
-    background-color: #404040;
+    background-color: var(--titleColor);
     color: transparent;
-    text-shadow: 0px 1px 1px rgba(255,255,255,0.3);
+    text-shadow: 0px 1px 1px var(--titleShadow);
     -webkit-background-clip: text;
        -moz-background-clip: text;
             background-clip: text;
@@ -37,33 +89,35 @@ h2 {
 }
 
 .title:hover{
-    color: #00ffd8;    
-    text-shadow: 0px 0px 15px #00ffd8;
+    color: var(--accent1);    
+    text-shadow: 0px 0px 15px var(--accent1);
     transition: all 0.4s ease;
 
 }
 
 .container{
     display: grid;
+    grid-template-columns: 100px 430px 100px;
     grid-template-rows: 1fr 1fr 6fr;
     align-items: center;
     justify-content: center;
     justify-items: center;
     width: 900VW;
     height: 100vh;
-    background: #989898;
+    background: var(--primaryColor);
 }
 
-.sub-container{
-    display: flex;
-    align-items: center;
-    justify-content: center;
+.arrowSpan{
+    align-self: center;
+    font-size: 90px ;
+    cursor: pointer;
 }
 
 .line{
+    grid-column: 2 / 3;
     display: grid;
     max-width: 520px;
-    grid-template-columns: repeat(6, 80px);
+    grid-template-columns: repeat(5, 80px);
     grid-gap: 5px;
     padding: 5px;
     /* width: 370px; */
@@ -73,7 +127,7 @@ h2 {
     align-content: center;
     align-items: center;
     border-radius: 15px;
-    background: #353535;
+    background: var(--secondaryColor);
 }
 
 .button{
@@ -82,46 +136,51 @@ h2 {
     align-items: center;
     width: 78px;
     height: 78px;
-    border: 1px solid #9b9b9b;
-    background: radial-gradient(circle at bottom left, #919191, #a8a8a8);
+    border: 1px solid var(--buttonBorder);
+    background: radial-gradient(circle at bottom left, var(--buttonRadial), var(--buttonRadial2));
     border-radius: 10px;
     transition: all 0.2s ease;
+    cursor: pointer;
 }
 
 .round{
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 65px;
-    height: 65px;
-    border: 1px solid #aaaaaa;
-    border-radius: 50px;
-    background: radial-gradient(circle at bottom left, #cacaca, #8a8a8a);
+    width: 64px;
+    height: 64px;
+    border: 1px solid var(--roundBorder);
+    border-radius: 80px;
+    background: radial-gradient(circle at bottom left, var(--roundRadial), var(--roundRadial2));
 }
 
 
 .frou{
-    width: 20px;
-    /* height: 45px; */
+    width: 40px;
     font-weight: 700;
-    color: #404040;
     user-select: none;     
+    color: var(--dotColor);
+    /* background-color: #000000; */
+    /* color: transparent; */
+    text-shadow: 0px 1px 1px var(--dotShadow);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
     /* display: block; */
 }
 
-/* .dot{
-    width: 20px;
-    height: 20px;
-    border-radius: 10px;
-    background: #404040;
-    display: none;
-} */
 
 .textTest{
+    margin-top: 20px;
+    grid-column: 2 / 3;
+    grid-row: 3 / 4;
+    color: var(--accent1);
+    text-shadow: 0px 0px 5px var(--accent1);
     vertical-align: center;
     text-align: center;
     width: 200px;
-    height: 200px;
+    align-self: flex-start;
+    /* height: 200px; */
 }
 
 
@@ -129,35 +188,54 @@ h2 {
 
 
 .button.active{
-    /* background: #353535; */
-    text-shadow: 0px 0px 15px #00ffd8;    
-    box-shadow:  2px  2px 7px #00ffd8, 
-                -2px -2px 7px #00ffd8,
-                 2px -2px 7px #00ffd8,
-                -2px  2px 7px #00ffd8;
+    /* background: var(--secondaryColor); */
+    text-shadow: 0px 0px 15px var(--accent1);    
+    box-shadow:  2px  2px 7px var(--accent1), 
+                -2px -2px 7px var(--accent1),
+                 2px -2px 7px var(--accent1),
+                -2px  2px 7px var(--accent1);
     transform: scale(0.90);
     transition: all 0.2s ease;
 }
 
 .button.active span{
-    color: #00ffd8;
+    color: var(--accent1);
 }
 
-@media (max-width: 600px) {
+@media (max-width: 630px) {
+    .container{
+        grid-template-columns: 50px 260px 50px;
+    }
+    .arrowSpan{
+        font-size: 50px ;
+    }
+    
     .line{
         display: grid;
         grid-template-columns: repeat(3, 80px);
         grid-gap: 5px;
     }
     h1 {
+        height: 57px;
         font-size: 48px;
+        margin: 0 auto;
+        padding: 5px 0px 0px 0px;
     }
     
     h2 {
-        font-size: 28px;
+        height: 43px;
+        font-size: 35px;
+        margin: 0 auto;
+        padding: 12px 0px 0px 0px;
+    }
+    h3 {
+        height: 50px;
+        font-size: 50px;
+        margin: 0 auto;
+        padding: 0px 0px 5px 0px;
     }
     .frou{
-        padding-top: 7px;
+        padding-top: 8px;
         /* display: none; */
     }
     /* .dot{

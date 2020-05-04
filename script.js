@@ -54,7 +54,7 @@ function soundFunct(dataKey) {
 
 
 
-const mediaChange = window.matchMedia('(max-width: 600px)')
+const mediaChange = window.matchMedia('(max-width: 630px)')
 changeKeys(mediaChange) // Call listener function at run time
 mediaChange.addListener(changeKeys) // Attach listener function on state changes
 
@@ -62,14 +62,14 @@ mediaChange.addListener(changeKeys) // Attach listener function on state changes
 function changeKeys(mediaChange) {
 	
 	// i really did everything i could but i didn't find a way to get the characters automatically and save them
-	const mem = ['A', 'Z', 'E', 'R', 'T', 'Y', 'Q', 'S', 'D', 'F', 'G', 'H', 'W', 'X', 'C', 'V', 'B', 'N']
+	const mem = ['A', 'Z', 'E', 'R', 'T', 'Q', 'S', 'D', 'F', 'G', 'W', 'X', 'C', 'V', 'B']
 	const y = document.querySelectorAll('.frou');
 	
 	if (mediaChange.matches) { // If media query matches
 		var i;
 		for (i = 0; i < y.length; i++) {
 			y[i].innerHTML = '•';
-			y[i].style.fontSize =  '50px';
+			y[i].style.fontSize =  '70px';
 		}
 	} else {
 		for (i = 0; i < y.length; i++) {
@@ -79,5 +79,29 @@ function changeKeys(mediaChange) {
 		}
 		
 }}
+
+let o = 0
+
+const changeTitleh2 = document.querySelector('.h2')
+const changeTitleh3 = document.querySelector('.h3')
+const arrow = document.querySelectorAll(".arrowSpan")
+for (i = 0; i < arrow.length; i++) {	
+	
+	arrow[i].addEventListener('click', function() {
+		o++
+		if(o%2 != 0)
+		{
+			document.documentElement.setAttribute('data-theme', 'dark');
+			changeTitleh2.style.display = 'none'
+			changeTitleh3.style.display = 'block'
+		}
+		else
+		{
+			document.documentElement.setAttribute('data-theme', 'light');
+			changeTitleh2.style.display = 'block'
+			changeTitleh3.style.display = 'none'
+		}
+  });
+}
 
 
