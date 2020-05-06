@@ -1,10 +1,11 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Drumpad Memory</title>
     <link rel="stylesheet" href="./style.css">
+    <link rel="shortcut icon" href="">
 </head>
 <body class="noSelect">
     <div class="container">
@@ -12,110 +13,101 @@
             <span class="arrowSpan noSelect"><</span>
         </div>
         <div class="head">
-            <h2 class="title h2">playground</h2>
-            <h1 class="title h1">drumpad</h1>
-            <h4 class="title h4">drumpad</h4>
-            <h3 class="title h3">memory</h3>
+            <!-- it could have be better here but to avoid weirds colors animations it work fine -->
+            <h1 class="title playground">playground</h1>
+            <h1 class="title drumpad1">drumpad</h1>
+            <h1 class="title drumpad2">drumpad</h1>
+            <h1 class="title memory">memory</h1>
+        </div>
+        <div class="text1 textDesign">
+            <p>Espace terrain de jeu, c'est vous qui controlez ici</p>
         </div>
         <div class="title">
             <span class="arrowSpan noSelect">></span>
         </div>
         <div class="line">
-            <div data-key="65" class="button but noSelect">
-                <div class="round but"><span class="frou but">A</span>
+            <span class="playBut textDesign">JOUER</span>
+            <div data-key="1" class="button but noSelect">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="90" class="button but noSelect">
-                <div class="round but"><span class="frou but">Z</span>
+            <div data-key="2" class="button but noSelect">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="69" class="button but">
-                <div class="round but"><span class="frou but">E</span>
+            <div data-key="3" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="82" class="button but">
-                <div class="round but"><span class="frou but">R</span>
+            <div data-key="4" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="84" class="button but">
-                <div class="round but"><span class="frou but">T</span>
+            <div data-key="5" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <!-- <div data-key="89" class="button but">
-                <div class="round but"><span class="frou but">Y</span>
-                </div>
-            </div> -->
-            <div data-key="81" class="button but">
-                <div class="round but"><span class="frou but">Q</span>
+            <div data-key="6" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="83" class="button but">
-                <div class="round but"><span class="frou but">S</span>
+            <div data-key="7" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="68" class="button but">
-                <div class="round but"><span class="frou but">D</span>
+            <div data-key="8" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="70" class="button but">
-                <div class="round but"><span class="frou but">F</span>
+            <div data-key="9" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="71" class="button but">
-                <div class="round but"><span class="frou but">G</span>
+            <div data-key="10" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <!-- <div data-key="72" class="button but">
-                <div class="round but"><span class="frou but">H</span>
-                </div>
-            </div> -->
-            <div data-key="87" class="button but">
-                <div class="round but"><span class="frou but">W</span>
+            <div data-key="11" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="88" class="button but">
-                <div class="round but"><span class="frou but">X</span>
+            <div data-key="12" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="67" class="button but">
-                <div class="round but"><span class="frou but">C</span>
+            <div data-key="13" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="86" class="button but">
-                <div class="round but"><span class="frou but">V</span>
+            <div data-key="14" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <div data-key="66" class="button but">
-                <div class="round but"><span class="frou but">B</span>
+            <div data-key="15" class="button but">
+                <div class="round but"><span class="frou but"></span>
                 </div>
             </div>
-            <!-- <div data-key="78" class="button but">
-                <div class="round but"><span class="frou but">N</span>
-                </div>
-            </div> -->
         </div>
-        <div class="textTest">
+        <div class="text2 textDesign">
             <p>lolololo</p>
         </div>
     </div>
-    <audio data-key="65" data-id="heyaay" src="./audio/kick/clap.mp3"></audio>
-    <audio data-key="90" data-id="bg" src="./audio/kick/kick.mp3"></audio>
-    <audio data-key="69" data-id="tes" src="./audio/kick/kick2.mp3"></audio>
-    <audio data-key="82" data-id="le" src="./audio/kick/kick3.mp3"></audio>
-    <audio data-key="84" data-id="plus" src="./audio/kick/snap.mp3"></audio>
-    <!-- <audio data-key="89" data-id="beau" src="./audio/kick/snare.mp3"></audio> -->
-    <audio data-key="81" data-id="wha" src="./audio/kick/snare2.mp3"></audio>
-    <audio data-key="83" data-id="ooou" src="./audio/kick/snare3.mp3"></audio>
-    <audio data-key="68" data-id="cest" src="./audio/kick/snare4.mp3"></audio>
-    <audio data-key="70" data-id="génial" src="./audio/percu/claves.mp3"></audio>
-    <audio data-key="71" data-id="ce" src="./audio/percu/conga.mp3"></audio>
-    <!-- <audio data-key="72" data-id="jeu" src="./audio/percu/conga2.mp3"></audio> -->
-    <audio data-key="87" data-id="le" src="./audio/percu/crash.mp3"></audio>
-    <audio data-key="88" data-id="design" src="./audio/percu/shaker.mp3"></audio>
-    <audio data-key="67" data-id="est" src="./audio/percu/tom.mp3"></audio>
-    <audio data-key="86" data-id="vraiment" src="./audio/percu/tom2.mp3"></audio>
-    <audio data-key="66" data-id="trop" src="./audio/percu/triangle.mp3"></audio>
-    <!-- <audio data-key="78" data-id="classe" src="./audio/voices/holdup.mp3"></audio> -->
+    <audio data-key="1" data-id="clap" src="./audio/kick/clap.mp3"></audio>
+    <audio data-key="2" data-id="kick" src="./audio/kick/kick.mp3"></audio>
+    <audio data-key="3" data-id="kiick" src="./audio/kick/kick2.mp3"></audio>
+    <audio data-key="4" data-id="kiiick" src="./audio/kick/kick3.mp3"></audio>
+    <audio data-key="5" data-id="snap" src="./audio/kick/snap.mp3"></audio>
+    <audio data-key="6" data-id="snare" src="./audio/kick/snare2.mp3"></audio>
+    <audio data-key="7" data-id="conga" src="./audio/percu/conga2.mp3"></audio>
+    <audio data-key="8" data-id="snare" src="./audio/kick/snare4.mp3"></audio>
+    <audio data-key="9" data-id="claves" src="./audio/percu/claves.mp3"></audio>
+    <audio data-key="10" data-id="tom" src="./audio/percu/tom.mp3"></audio>
+    <audio data-key="11" data-id="khaled" src="./audio/voices/khaled.mp3"></audio>
+    <audio data-key="12" data-id="yeah" src="./audio/voices/drake-yeauh.mp3"></audio>
+    <audio data-key="13" data-id="hey" src="./audio/voices/hey.mp3"></audio>
+    <audio data-key="14" data-id="huh" src="./audio/voices/huh.mp3"></audio>
+    <audio data-key="15" data-id="holdup" src="./audio/voices/holdup.mp3"></audio>
+    <script src="./tableKeyboard.js"></script>
     <script src="./script.js"></script>
 </body>
 </html>
