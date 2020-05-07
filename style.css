@@ -1,5 +1,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700;900&display=swap');
 
+
+/**********************          Variables         **********************/
+
 :root{
     --primaryColor: #989898;
     --secondaryColor: #353535;
@@ -58,44 +61,16 @@ p{
     margin: 0 auto;
 }
 
-.head{
-    height: 225px;
-}
-
-.drumpad1 {
-    /* font-size: 97px; */
-    font-size: 83px;
-    /* padding: 10px 0px; */
-    transition: all 1.2s ease;
-    user-select: none; 
-}
-
-.playground {
-    /* font-size: 70px; */
-    height: 70px;
-    font-size: 60px;
-    margin-top: 30px;
-    margin-bottom: 10px;
-    /* margin: 30px 0px 0px 0px; */
-    /* padding-bottom: 10px; */
-    transition: all 1.2s ease;
-    user-select: none; 
-}
-.memory {
-    height: 100px;
-    /* font-size: 70px; */
-    font-size: 88px;
-    padding-right: 10px;
-    display: none;
-}
-.drumpad2 {
-    /* font-size: 97px; */
-    font-size: 83px;
-    margin: 0 auto;
-    margin: 10px 0px;
-    transition: all 1.2s ease;
-    display: none;
-    user-select: none; 
+.container{
+    display: grid;
+    grid-template-columns: 100px 430px 100px;
+    grid-template-rows: 1fr 40px 1fr 1fr;
+    align-items: center;
+    justify-content: center;
+    justify-items: center;
+    width: 900VW;
+    height: 100vh;
+    background: var(--primaryColor);
 }
 
 .noSelect {
@@ -106,6 +81,44 @@ p{
     -moz-user-select: none;
     -ms-user-select: none;
     user-select: none;
+}
+
+
+/**********************          Header         **********************/
+
+.head{
+    height: 225px;
+}
+
+.drumpad1 {
+    font-size: 83px;
+    transition: all 1.2s ease;
+    user-select: none; 
+}
+
+.playground {
+    height: 70px;
+    font-size: 60px;
+    margin-top: 30px;
+    margin-bottom: 10px;
+    transition: all 1.2s ease;
+    user-select: none; 
+}
+
+.memory {
+    height: 100px;
+    font-size: 88px;
+    padding-right: 10px;
+    display: none;
+}
+
+.drumpad2 {
+    font-size: 83px;
+    margin: 0 auto;
+    margin: 10px 0px;
+    transition: all 1.2s ease;
+    display: none;
+    user-select: none; 
 }
 
 .title{
@@ -126,35 +139,20 @@ p{
 
 }
 
-.container{
-    display: grid;
-    grid-template-columns: 100px 430px 100px;
-    grid-template-rows: 1fr 40px 1fr 1fr;
-    align-items: center;
-    justify-content: center;
-    justify-items: center;
-    width: 900VW;
-    height: 100vh;
-    background: var(--primaryColor);
-}
-
 .arrowSpan{
     align-self: center;
     font-size: 90px ;
-    /* user-select: none; */
     cursor: pointer;
     transition: 0s;
 }
 
-.line{
+.fond{
     grid-column: 2 / 3;
     display: grid;
     max-width: 520px;
     grid-template-columns: repeat(5, 80px);
     grid-gap: 5px;
     padding: 5px;
-    /* width: 370px; */
-    /* height: 100px; */
     justify-content: center;
     justify-items: center;
     align-content: center;
@@ -163,6 +161,10 @@ p{
     background: var(--secondaryColor);
     position: relative;
 }
+
+
+/**********************          SkeumorphismButtons         **********************/
+/* full css by me */
 
 .button{
     display: flex;
@@ -189,8 +191,7 @@ p{
     background: radial-gradient(circle at bottom left, var(--roundRadial), var(--roundRadial2));
 }
 
-
-.frou{
+.textBut{
     width: 40px;
     font-weight: 700;
     user-select: none;     
@@ -201,9 +202,10 @@ p{
     -webkit-background-clip: text;
        -moz-background-clip: text;
             background-clip: text;
-    /* display: block; */
 }
 
+
+/**********************          TextInfo         **********************/
 
 .textDesign{
     display: flex;
@@ -217,6 +219,16 @@ p{
     grid-row: 2 / 3;
     margin-bottom: 10px;
 }
+
+.text2{
+    margin-top: 20px;
+    grid-column: 2 / 3;
+    grid-row: 4 / 5;
+    align-self: flex-start;
+}
+
+
+/**********************          PlayBut         **********************/
 
 .playBut{
     margin-left: 7px;
@@ -235,21 +247,10 @@ p{
     transition: all 0.4s ease;
 }
 
-.text2{
-    margin-top: 20px;
-    grid-column: 2 / 3;
-    grid-row: 4 / 5;
-    /* width: 200px; */
-    align-self: flex-start;
-    /* height: 200px; */
-}
 
-
-
-
+/**********************          JSclassList         **********************/
 
 .button.active{
-    /* background: var(--secondaryColor); */
     text-shadow: 0px 0px 15px var(--accent1);    
     box-shadow:  2px  2px 7px var(--accent1), 
                 -2px -2px 7px var(--accent1),
@@ -261,7 +262,6 @@ p{
 }
 
 .button.wrong{
-    /* background: var(--secondaryColor); */
     text-shadow: 0px 0px 15px var(--wrong);    
     box-shadow:  2px  2px 7px var(--wrong), 
                 -2px -2px 7px var(--wrong),
@@ -274,6 +274,9 @@ p{
 .button.active span{
     color: var(--accent1);
 }
+
+
+/**********************          MediaQuery         **********************/
 
 @media (max-width: 630px) {
     .container{
@@ -289,7 +292,7 @@ p{
     .text1{
         font-size: 9.5px;
     }
-    .line{
+    .fond{
         display: grid;
         grid-template-columns: repeat(3, 80px);
         grid-gap: 5px;
@@ -317,11 +320,11 @@ p{
         margin-top: 5px;
         margin-bottom: 0px;
     }
-    .frou{
+    .textBut{
         padding-top: 8px;
     }
     .playBut{
         font-size: 40px;
     }
-  }
+}
   

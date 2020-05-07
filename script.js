@@ -1,12 +1,12 @@
 const container = document.querySelector('.container')
 
-const line = container.querySelector('.line')
+const fond = container.querySelector('.fond')
 const changeTitleh1 = container.querySelector('.drumpad1')
 const changeTitleh2 = container.querySelector('.playground')
 const changeTitleh3 = container.querySelector('.memory')
 const changeTitleh4 = container.querySelector('.drumpad2')
 const text1 = container.querySelector('.text1')
-const playBut = document.querySelector('.playBut')
+const playBut = container.querySelector('.playBut')
 const text2 = container.querySelector('.text2')
 const arrow = container.querySelectorAll('.arrowSpan')
 const button = container.querySelectorAll('.but')
@@ -101,7 +101,6 @@ function soundFunct(nbKey) {
 						win = win + 1
 						const greetingsText = greetings[Math.floor(Math.random() * greetings.length)]
 						text1.textContent = 'Niveau : ' + win
-						text1.style.fontSize = '16px'
 						text2.textContent = greetingsText
 						setTimeout(function () {
 							wrong = 0
@@ -151,6 +150,7 @@ playBut.addEventListener('click', function() {
 
 playBut.addEventListener('click', debut )
 function debut(){
+	text1.style.fontSize = '16px'
 	text1.textContent = 'Niveau : 0'
 	butDisable()
 	playBut.style.display = 'none'
@@ -161,7 +161,7 @@ function debut(){
 
 // disable click end change cursor
 function butDisable(){
-	line.style.cursor = 'not-allowed'
+	fond.style.cursor = 'not-allowed'
 	for (let but of button) {
 		but.style.cursor = 'not-allowed'
 		but.style.pointerEvents = 'none'
@@ -170,7 +170,7 @@ function butDisable(){
 
 // reenable click end change cursor
 function butReEnable(){
-	line.style.cursor = 'auto'
+	fond.style.cursor = 'auto'
 	for (let but of button) {
 		but.style.cursor = 'pointer'
 		but.style.pointerEvents = 'auto'
@@ -221,7 +221,7 @@ function botTurn(){
 	}
 	setTimeout(function () {
 		butReEnable()
-	}, 1000 * botMem.length)
+	}, 1000 * botMem.length - 500)
 
 }
 
@@ -257,13 +257,16 @@ for (i = 0; i < arrow.length; i++) {
 			changeTitleh2.style.display = 'block'
 			changeTitleh3.style.display = 'none'
 			changeTitleh4.style.display = 'none'
-			text1.textContent = 'Espace terrain de jeu, c\'est vous qui controlez ici'
+			text1.textContent = 'Espace terrain de jeu, vous avez le controle ici'
 			text2.textContent = ''
 			playBut.style.display = 'none'
-			text1.style.fontSize = 'auto'
 			wrong = 2
 			butReEnable()
 			verifFunc()
+			if (mediaChange.matches == true) {
+				text1.style.fontSize = '9.5px'
+				
+			}
 		}
   })
 }
@@ -271,24 +274,29 @@ for (i = 0; i < arrow.length; i++) {
 
 // function that changes the display according to the width of the screen
 const mediaChange = window.matchMedia('(max-width: 630px)')
-mediaChange.addListener(changeKeys)
-changeKeys(mediaChange)
+mediaChange.addListener(changeKeyboard)
+changeKeyboard(mediaChange)
 
-function changeKeys(mediaChange) {
+function changeKeyboard(mediaChange) {
 	const mem = getKeyboard
-	const y = container.querySelectorAll('.frou')
+	const changeKeys = container.querySelectorAll('.textBut')
 	
 	if (mediaChange.matches) { // If media query matches
-		for (i = 0; i < y.length; i++) {
-			y[i].textContent = '•'
-			y[i].style.fontSize =  '70px'
-			// text1.style.fontSize = '9.5px'
+		for (i = 0; i < changeKeys.length; i++) {
+			changeKeys[i].textContent = '•'
+			changeKeys[i].style.fontSize =  '70px'
+			if (playValue == 1) {
+				text1.style.fontSize = '16px'
+			} else {
+				text1.style.fontSize = '9.5px'
+			}
 		}
 	} else {
-		for (i = 0; i < y.length; i++) {
-			mem.push (y[i].textContent)
-			y[i].textContent = mem[i]
-			y[i].style.fontSize =  ''
+		for (i = 0; i < changeKeys.length; i++) {
+			mem.push (changeKeys[i].textContent)
+			changeKeys[i].textContent = mem[i]
+			changeKeys[i].style.fontSize =  ''
+			text1.style.fontSize = '16px'
 		}
 		
 }}
