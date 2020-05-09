@@ -8,6 +8,15 @@ const changeTitleh4 = container.querySelector('.drumpad2')
 const text1 = container.querySelector('.text1')
 const playBut = container.querySelector('.playBut')
 const text2 = container.querySelector('.text2')
+const animateColor = document.querySelector('.aniamteColor')
+const animateColor1 = document.querySelector('.aniamteColor1')
+// const animateColor2 = document.querySelector('animate')
+
+const styles = getComputedStyle(document.documentElement)
+const varAccent1 = String(styles.getPropertyValue('--accent1')).trim()
+const varAccent2 = String(styles.getPropertyValue('--accent2')).trim()
+const varPrimaryColor = String(styles.getPropertyValue('--primaryColor')).trim()
+
 const arrow = container.querySelectorAll('.arrowSpan')
 const button = container.querySelectorAll('.but')
 const nbButtons = 15
@@ -28,6 +37,10 @@ let greetings = ['wow impressionnant', 'joli !', 'excellente mémoire', 'bravo',
 // 	const codeTable = ['A', 'Z', 'E', 'R', 'T', 'Q', 'S', 'D', 'F', 'G', 'W', 'X', 'C', 'V', 'B']
 // }
 
+
+
+animateColor.setAttribute('values', varAccent1 + ';' + varPrimaryColor + ';' + varAccent1);
+animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent1 + ';' + varPrimaryColor);
 
 for (let but of button) {
 	// put in an array all the data-key of the buttons of the page
@@ -246,6 +259,8 @@ for (i = 0; i < arrow.length; i++) {
 			playBut.textContent = 'JOUER'
 			text2.textContent = ''
 			playBut.style.display = 'block'
+			animateColor.setAttribute('values', varAccent2 + ';' + varPrimaryColor + ';' + varAccent2);
+			animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent2 + ';' + varPrimaryColor);
 			for (let but of button) {
 				but.style.pointerEvents = 'none'
 			}
@@ -267,6 +282,8 @@ for (i = 0; i < arrow.length; i++) {
 				text1.style.fontSize = '9.5px'
 				
 			}
+			animateColor.setAttribute('values', varAccent1 + ';' + varPrimaryColor + ';' + varAccent1);
+			animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent1 + ';' + varPrimaryColor);
 		}
   })
 }
