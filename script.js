@@ -14,8 +14,9 @@ const animateColor1 = document.querySelector('.aniamteColor1')
 
 const styles = getComputedStyle(document.documentElement)
 const varAccent1 = String(styles.getPropertyValue('--accent1')).trim()
-const varAccent2 = String(styles.getPropertyValue('--accent2')).trim()
+const varAccent1Dark = String(styles.getPropertyValue('--accent1Dark')).trim()
 const varPrimaryColor = String(styles.getPropertyValue('--primaryColor')).trim()
+const varPrimaryColorDark = String(styles.getPropertyValue('--primaryColorDark')).trim()
 
 const arrow = container.querySelectorAll('.arrowSpan')
 const button = container.querySelectorAll('.but')
@@ -259,8 +260,8 @@ for (i = 0; i < arrow.length; i++) {
 			playBut.textContent = 'JOUER'
 			text2.textContent = ''
 			playBut.style.display = 'block'
-			animateColor.setAttribute('values', varAccent2 + ';' + varPrimaryColor + ';' + varAccent2);
-			animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent2 + ';' + varPrimaryColor);
+			animateColor.setAttribute('values', varAccent1Dark + ';' + varPrimaryColorDark + ';' + varAccent1Dark);
+			animateColor1.setAttribute('values', varPrimaryColorDark + ';' + varAccent1Dark + ';' + varPrimaryColorDark);
 			for (let but of button) {
 				but.style.pointerEvents = 'none'
 			}
