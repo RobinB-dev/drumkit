@@ -51,10 +51,12 @@ body{
     margin: 0 auto;
     background: var(--primaryColor);
     user-select: none; 
+    position: relative;
 }
 
 h1{
     margin: 0 auto;
+    z-index: 5;
 }
 
 p{
@@ -83,17 +85,24 @@ p{
     user-select: none;
 }
 
+.svgBackground{
+    height: 100vh;
+    position: absolute;
+    z-index: 1;
+}
+
 
 /**********************          Header         **********************/
 
 .head{
     height: 225px;
+    z-index: 5;
 }
 
 .drumpad1 {
     font-size: 83px;
     transition: all 1.2s ease;
-    user-select: none; 
+    user-select: none;
 }
 
 .playground {
@@ -102,7 +111,7 @@ p{
     margin-top: 30px;
     margin-bottom: 10px;
     transition: all 1.2s ease;
-    user-select: none; 
+    user-select: none;
 }
 
 .memory {
@@ -118,7 +127,7 @@ p{
     margin: 10px 0px;
     transition: all 1.2s ease;
     display: none;
-    user-select: none; 
+    user-select: none;
 }
 
 .title{
@@ -130,6 +139,7 @@ p{
     -webkit-background-clip: text;
        -moz-background-clip: text;
             background-clip: text;
+    z-index: 10;
 }
 
 .title:hover{
@@ -144,6 +154,7 @@ p{
     font-size: 90px ;
     cursor: pointer;
     transition: 0s;
+    z-index: 15;
 }
 
 .fond{
@@ -160,11 +171,11 @@ p{
     border-radius: 15px;
     background: var(--secondaryColor);
     position: relative;
+    z-index: 10;
 }
 
 
 /**********************          SkeumorphismButtons         **********************/
-/* full css by me */
 
 .button{
     display: flex;
@@ -212,6 +223,7 @@ p{
     align-items: flex-start;
     color: var(--accent1);
     text-shadow: 0px 0px 5px var(--accent1);
+    z-index: 10;
 }
 
 .text1{
@@ -258,7 +270,7 @@ p{
                 -2px  2px 7px var(--accent1);
     transform: scale(0.90);
     transition: all 0.2s ease;
-    z-index: 5;
+    z-index: 10;
 }
 
 .button.wrong{
@@ -327,4 +339,3 @@ p{
         font-size: 40px;
     }
 }
-  

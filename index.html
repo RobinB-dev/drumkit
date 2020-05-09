@@ -8,6 +8,25 @@
     <link rel="shortcut icon" href="./images/icon.svg">
 </head>
 <body class="noSelect">
+    <svg class="svgBackground" width="100%" height="100%">
+        <defs>
+            <pattern id="honey" x="0" y="0" width="56" height="100" patternUnits="userSpaceOnUse">
+                <path d='M28 66L0 50L0 16L28 0L56 16L56 50L28 66L28 100' fill='none' stroke='url(#accentGradient)' stroke-width='1'/>
+                <path d='M28 0L28 34L0 50L0 84L28 100L56 84L56 50L28 34' fill='none' stroke='url(#accentGradient)' stroke-width='2'/>
+            </pattern>
+            <!-- https://codepen.io/ISOgenesis/pen/zxEXPg -->
+            <linearGradient id="accentGradient" x1="100%" y1="100%">
+                <stop offset="0%" stop-color="" stop-opacity="0.3">
+                <animate attributeName="stop-color" values="var(--primaryColor);var(--accent1);var(--primaryColor)" dur="5s" repeatCount="indefinite" />
+                </stop>
+                <stop offset="100%" stop-color="" stop-opacity="0.1">
+                <animate attributeName="stop-color" values="var(--accent1);var(--primaryColor);var(--accent1)" dur="10s" repeatCount="indefinite" />
+                <animate attributeName="offset" values=".95;.80;.60;.40;.20;0;.20;.40;.60;.80;.95" dur="14s" repeatCount="indefinite" />
+                </stop>
+            </linearGradient>
+        </defs>
+        <rect x="0" y="0" width="100%" height="100%" fill="url(#honey)" />
+    </svg>
     <div class="container">
         <div class="title">
             <span class="arrowSpan noSelect"><</span>
