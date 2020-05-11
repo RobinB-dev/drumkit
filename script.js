@@ -26,8 +26,8 @@ const arrow = container.querySelectorAll('.arrowSpan')
 const button = container.querySelectorAll('.clickable')
 const nbButtons = 15
 const arrayNb = []
+const getKeyboard = []
 const getKeycode = []
-let changeKeyboard = []
 let botMem = []
 let playerMem = []
 let trim = {}
@@ -37,6 +37,7 @@ let wrong = 0
 let win = 0
 let varPrimaryColor = varPrimaryColorLight
 let varAccent1 = varAccent1Light
+let timer = 0
 
 let greetings = ['wow impressionnant', 'joli !', 'excellente mémoire', 'bravo', 'clap clap clap', 'tu vas battre mon score là', 'hop un niveau de plus', 'bien joué', 'niveau suivant !', 't\'es sur la bonne voie', 'continue comme ça', 'Bruno Simon le meilleur prof', 'champion' ,'t\'es le meilleur', 'c\'était facile', 'mémoire au top', 't\'es bien partis', 'encore un peu aller', 'un niveau de plus']
 
@@ -83,7 +84,7 @@ keyboardBut.addEventListener('click', function() {
 			keyboardBut.classList.add('keyboardButActive')
 			dot.style.color = varAccent1
 			const changeKeys = container.querySelectorAll('.textBut')
-			changeKeyboard = []
+			const changeKeyboard = []
 			for (i = 0; i < changeKeys.length; i++) {
 				const searchObj = codeTable.find(search => search.nb == i+1 ).querty
 				// console.log(searchObj);
@@ -93,7 +94,7 @@ keyboardBut.addEventListener('click', function() {
 			// modeKeyboard.textContent = 'QUERTY'
 		} else if (keyboardMode%2 != 1){
 			const changeKeys = container.querySelectorAll('.textBut')
-			changeKeyboard = []
+			const changeKeyboard = []
 			keyboardBut.classList.remove('keyboardButActive')
 			dot.style.color = '#5e5e5e'
 			for (i = 0; i < changeKeys.length; i++) {
@@ -112,12 +113,12 @@ keyboardBut.addEventListener('click', function() {
 })
 
 
-// changeKeyboard : get all the lettres of the keyboard chosen in the table for change the keys on display depending on whether you choose azerty or querty
+// getKeyboard : get all the lettres of the keyboard chosen in the table for change the keys on display depending on whether you choose azerty or querty
 // getKeycode : get all keycode in the table to disable key that aren't in it
 for (i = 1; i <= nbButtons; i++) {
 	const searchObj = codeTable.find(search => search.nb == i ).azerty
 	const searchKeycode = codeTable.find(search => search.nb == i ).keycode
-	changeKeyboard.push(searchObj)
+	getKeyboard.push(searchObj)
 	getKeycode.push(searchKeycode)
 	
 }
@@ -273,8 +274,10 @@ function botTurn(){
 		setTimeout(function () {
 			const dataKey = botMem[i]
 			soundFunct(dataKey)
-			// console.log('player')
-		}, i * 1000)
+			timer = calcTimer(botMem.length)
+			console.log(1000 - timer);
+			
+		},i*1000 - timer )
 	}
 	setTimeout(function () {
 		butReEnable()
@@ -282,7 +285,9 @@ function botTurn(){
 
 }
 
-
+function calcTimer(x){
+	return (x<10) ? x*60 : 600
+}
 
 
 
@@ -313,7 +318,8 @@ for (i = 0; i < arrow.length; i++) {
 				dot.style.color = varAccent1
 			}
 		}
-		else{
+		else
+		{
 			document.documentElement.setAttribute('data-theme', 'light')
 			changeTitleh1.style.display = 'block'
 			changeTitleh2.style.display = 'block'
@@ -343,11 +349,11 @@ for (i = 0; i < arrow.length; i++) {
 
 // function that changes the display according to the width of the screen
 const mediaChange = window.matchMedia('(max-width: 630px)')
-mediaChange.addListener(changeKeyboardFunc)
-changeKeyboardFunc(mediaChange)
+mediaChange.addListener(changeKeyboard)
+changeKeyboard(mediaChange)
 
-function changeKeyboardFunc(mediaChange) {
-	const mem = changeKeyboard
+function changeKeyboard(mediaChange) {
+	const mem = getKeyboard
 	const changeKeys = container.querySelectorAll('.textBut')
 	
 	if (mediaChange.matches) { // If media query matches
