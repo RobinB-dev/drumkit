@@ -68,7 +68,7 @@ p{
 .container{
     display: grid;
     grid-template-columns: 100px 430px 100px;
-    grid-template-rows: 1fr 40px 1fr 1fr;
+    grid-template-rows: 1fr 40px 1fr 40px 50px 1fr;
     align-items: center;
     justify-content: center;
     justify-items: center;
@@ -159,7 +159,7 @@ p{
     z-index: 15;
 }
 
-.fond{
+.zone{
     grid-column: 2 / 3;
     display: grid;
     max-width: 520px;
@@ -261,6 +261,83 @@ p{
     transition: all 0.4s ease;
 }
 
+/**********************          keyboardButton         **********************/
+
+.deep{
+    align-self: flex-start;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    grid-column: 2 / 3;
+    grid-row: 6 / 7;
+    width: 120px;
+    height: 70px;
+    border-radius: 50px;
+    background: radial-gradient(circle at bottom left, var(--roundRadial), var(--roundRadial2));
+    z-index: 10;
+    /* display: block; */
+}
+
+.keyboardBut{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    vertical-align: center;
+    width: 105px;
+    height: 55px;
+    box-shadow:  1px  1px 1px var(--secondaryColor), 
+                -1px -1px 1px var(--secondaryColor),
+                1px -1px 1px var(--secondaryColor),
+                -1px 1px 1px var(--secondaryColor),
+                0px  20px 24px #585858;
+    border-radius: 50px;
+    transition: all 0.4s ease;
+    background: var(--buttonRadial);
+    position: absolute;
+}
+
+.curve{
+    width: 96px;
+    height: 46px;
+    border-radius: 50px;
+    border: 2px solid var(--roundBorder);
+    /* box-shadow:  0px  20px 24px var(--secondaryColor); */
+    background: radial-gradient(circle at bottom left, var(--roundRadial), var(--roundRadial2));
+}
+
+
+.textBut2{
+    position: relative;
+    top: 14px;
+    color: var(--dotColor);
+    background-color: #000000;
+    /* color: transparent; */
+    text-shadow: 0px 1px 1px var(--dotShadow);
+    -webkit-background-clip: text;
+       -moz-background-clip: text;
+            background-clip: text;
+    z-index: 10;
+}
+
+.dot{
+    grid-column: 2 / 3;
+    grid-row: 5 / 6;
+    font-size: 50px;
+    z-index: 20;
+    display: block;
+}
+
+.keyboardButActive{
+    box-shadow:  1px  1px 1px var(--secondaryColor), 
+                -1px -1px 1px var(--secondaryColor),
+                1px -1px 1px var(--secondaryColor),
+                -1px 1px 1px var(--secondaryColor);
+    
+    transform: scale(0.98);
+    transition: all 0.4s ease;
+
+}
 
 /**********************          JSclassList         **********************/
 
@@ -306,7 +383,7 @@ p{
     .text1{
         font-size: 9.5px;
     }
-    .fond{
+    .zone{
         display: grid;
         grid-template-columns: repeat(3, 80px);
         grid-gap: 5px;

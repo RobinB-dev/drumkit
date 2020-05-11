@@ -1,6 +1,6 @@
 const container = document.querySelector('.container')
 
-const fond = container.querySelector('.fond')
+const zone = container.querySelector('.zone')
 const changeTitleh1 = container.querySelector('.drumpad1')
 const changeTitleh2 = container.querySelector('.playground')
 const changeTitleh3 = container.querySelector('.memory')
@@ -10,16 +10,20 @@ const playBut = container.querySelector('.playBut')
 const text2 = container.querySelector('.text2')
 const animateColor = document.querySelector('.aniamteColor')
 const animateColor1 = document.querySelector('.aniamteColor1')
+const keyboardBut = container.querySelector('.keyboardBut')
+const dot = container.querySelector('.dot')
+const deep = container.querySelector('.deep')
+const modeKeyboard = container.querySelector('.modeKeyboard')
 // const animateColor2 = document.querySelector('animate')
 
 const styles = getComputedStyle(document.documentElement)
-const varAccent1 = String(styles.getPropertyValue('--accent1')).trim()
+const varAccent1Light = String(styles.getPropertyValue('--accent1')).trim()
 const varAccent1Dark = String(styles.getPropertyValue('--accent1Dark')).trim()
-const varPrimaryColor = String(styles.getPropertyValue('--primaryColor')).trim()
+const varPrimaryColorLight = String(styles.getPropertyValue('--primaryColor')).trim()
 const varPrimaryColorDark = String(styles.getPropertyValue('--primaryColorDark')).trim()
 
 const arrow = container.querySelectorAll('.arrowSpan')
-const button = container.querySelectorAll('.but')
+const button = container.querySelectorAll('.clickable')
 const nbButtons = 15
 const arrayNb = []
 const getKeyboard = []
@@ -30,7 +34,9 @@ let trim = {}
 let modeGame = 0
 let playValue = 0
 let wrong = 0
-var win = 0
+let win = 0
+let varPrimaryColor = varPrimaryColorLight
+let varAccent1 = varAccent1Light
 
 let greetings = ['wow impressionnant', 'joli !', 'excellente mémoire', 'bravo', 'clap clap clap', 'tu vas battre mon score là', 'hop un niveau de plus', 'bien joué', 'niveau suivant !', 't\'es sur la bonne voie', 'continue comme ça', 'Bruno Simon le meilleur prof', 'champion' ,'t\'es le meilleur', 'c\'était facile', 'mémoire au top', 't\'es bien partis', 'encore un peu aller', 'un niveau de plus']
 
@@ -43,7 +49,7 @@ let greetings = ['wow impressionnant', 'joli !', 'excellente mémoire', 'bravo',
 animateColor.setAttribute('values', varAccent1 + ';' + varPrimaryColor + ';' + varAccent1);
 animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent1 + ';' + varPrimaryColor);
 
-for (let but of button) {
+for (const but of button) {
 	// put in an array all the data-key of the buttons of the page
 	const countNb = but.getAttribute('data-key')
 	if (countNb == null){
@@ -68,12 +74,51 @@ function butClick(but){
 	}
 }
 
+let keyboardMode = 0
+
+keyboardBut.addEventListener('click', function() {
+	keyboardMode++
+	for (i = 1; i <= nbButtons; i++) {
+		if(keyboardMode%2 != 0){
+			keyboardBut.classList.add('keyboardButActive')
+			dot.style.color = varAccent1
+			const changeKeys = container.querySelectorAll('.textBut')
+			const changeKeyboard = []
+			for (i = 0; i < changeKeys.length; i++) {
+				const searchObj = codeTable.find(search => search.nb == i+1 ).querty
+				// console.log(searchObj);
+				changeKeyboard.push(searchObj)
+				console.log(changeKeyboard[i]);
+				changeKeys[i].textContent = changeKeyboard[i]
+			}
+			// modeKeyboard.textContent = 'QUERTY'
+		} else if (keyboardMode%2 != 1){
+			const changeKeys = container.querySelectorAll('.textBut')
+			const changeKeyboard = []
+			keyboardBut.classList.remove('keyboardButActive')
+			dot.style.color = '#5e5e5e'
+			for (i = 0; i < changeKeys.length; i++) {
+				const searchObj = codeTable.find(search => search.nb == i+1 ).azerty
+				// console.log(searchObj);
+				changeKeyboard.push(searchObj)
+				console.log(changeKeyboard[i]);
+				changeKeys[i].textContent = changeKeyboard[i]
+			}
+			// modeKeyboard.textContent = 'QUERTY'
+	
+		} else {
+			console.log(error);
+		}
+		
+	}
+})
+
 
 // getKeyboard : get all the lettres of the keyboard chosen in the table for change the keys on display depending on whether you choose azerty or querty
 // getKeycode : get all keycode in the table to disable key that aren't in it
 for (i = 1; i <= nbButtons; i++) {
-	const searchObj = codeTable.find(search => search.nb == i ).azerty // I may add this functionality later
-	const searchKeycode = codeTable.find(search => search.nb == i ).keycode // I may add this functionality later
+	const searchObj = codeTable.find(search => search.nb == i ).azerty
+	const searchKeycode = codeTable.find(search => search.nb == i ).keycode
 	getKeyboard.push(searchObj)
 	getKeycode.push(searchKeycode)
 	
@@ -100,7 +145,7 @@ const soundArray = []
 
 function soundFunct(nbKey) {
 	const audio = document.querySelector(`audio[data-key='${nbKey}']`)
-	const trim = document.querySelector(`.but[data-key='${nbKey}']`)
+	const trim = document.querySelector(`.clickable[data-key='${nbKey}']`)
 
 	// test if we are in the memory mode
 	if(modeGame%2 != 0)
@@ -162,8 +207,8 @@ playBut.addEventListener('click', function() {
 
 })
 
-playBut.addEventListener('click', debut )
-function debut(){
+playBut.addEventListener('click', start )
+function start(){
 	text1.style.fontSize = '16px'
 	text1.textContent = 'Niveau : 0'
 	butDisable()
@@ -175,8 +220,8 @@ function debut(){
 
 // disable click end change cursor
 function butDisable(){
-	fond.style.cursor = 'not-allowed'
-	for (let but of button) {
+	zone.style.cursor = 'not-allowed'
+	for (const but of button) {
 		but.style.cursor = 'not-allowed'
 		but.style.pointerEvents = 'none'
 	}
@@ -184,8 +229,8 @@ function butDisable(){
 
 // reenable click end change cursor
 function butReEnable(){
-	fond.style.cursor = 'auto'
-	for (let but of button) {
+	zone.style.cursor = 'auto'
+	for (const but of button) {
 		but.style.cursor = 'pointer'
 		but.style.pointerEvents = 'auto'
 	}
@@ -198,7 +243,7 @@ function verifFunc(){
 		playBut.textContent = 'REJOUER'
 		text2.textContent = 'dommage !'
 		text1.textContent = 'Niveau : ' + win + ' Echec'
-		for (let but of button) {
+		for (const but of button) {
 			but.classList.add('wrong')
 			but.style.pointerEvents = 'none'
 			setTimeout( function () { but.classList.remove('wrong'); }, 200)
@@ -249,8 +294,7 @@ for (i = 0; i < arrow.length; i++) {
 	
 	arrow[i].addEventListener('click', function() {
 		modeGame++
-		if(modeGame%2 != 0)
-		{
+		if(modeGame%2 != 0){
 			document.documentElement.setAttribute('data-theme', 'dark')
 			changeTitleh1.style.display = 'none'
 			changeTitleh2.style.display = 'none'
@@ -260,14 +304,18 @@ for (i = 0; i < arrow.length; i++) {
 			playBut.textContent = 'JOUER'
 			text2.textContent = ''
 			playBut.style.display = 'block'
-			animateColor.setAttribute('values', varAccent1Dark + ';' + varPrimaryColorDark + ';' + varAccent1Dark);
-			animateColor1.setAttribute('values', varPrimaryColorDark + ';' + varAccent1Dark + ';' + varPrimaryColorDark);
-			for (let but of button) {
+			varAccent1 = varAccent1Dark
+			varPrimaryColor = varPrimaryColorDark
+			animateColor.setAttribute('values', varAccent1 + ';' + varPrimaryColor + ';' + varAccent1);
+			animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent1 + ';' + varPrimaryColor);
+			for (const but of button) {
 				but.style.pointerEvents = 'none'
 			}
+			if(keyboardMode%2 != 0){
+				dot.style.color = varAccent1
+			}
 		}
-		else
-		{
+		else{
 			document.documentElement.setAttribute('data-theme', 'light')
 			changeTitleh1.style.display = 'block'
 			changeTitleh2.style.display = 'block'
@@ -283,8 +331,13 @@ for (i = 0; i < arrow.length; i++) {
 				text1.style.fontSize = '9.5px'
 				
 			}
+			varAccent1 = varAccent1Light
+			varPrimaryColor = varPrimaryColorLight
 			animateColor.setAttribute('values', varAccent1 + ';' + varPrimaryColor + ';' + varAccent1);
 			animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent1 + ';' + varPrimaryColor);
+			if(keyboardMode%2 != 0){
+				dot.style.color = varAccent1
+			}
 		}
   })
 }
@@ -309,6 +362,8 @@ function changeKeyboard(mediaChange) {
 				text1.style.fontSize = '9.5px'
 			}
 		}
+		dot.style.display = 'none'
+		deep.style.display = 'none'
 	} else {
 		for (i = 0; i < changeKeys.length; i++) {
 			mem.push (changeKeys[i].textContent)
@@ -316,5 +371,6 @@ function changeKeyboard(mediaChange) {
 			changeKeys[i].style.fontSize =  ''
 			text1.style.fontSize = '16px'
 		}
-		
+		dot.style.display = 'flex'
+		deep.style.display = 'flex'
 }}
