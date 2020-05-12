@@ -261,7 +261,7 @@ p{
     transition: all 0.4s ease;
 }
 
-/**********************          keyboardButton         **********************/
+/**********************          LoopButton         **********************/
 
 .deep{
     align-self: flex-start;
@@ -278,7 +278,7 @@ p{
     /* display: block; */
 }
 
-.keyboardBut{
+.loopBut{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -328,7 +328,7 @@ p{
     display: block;
 }
 
-.keyboardButActive{
+.loopButActive{
     box-shadow:  1px  1px 1px var(--secondaryColor), 
                 -1px -1px 1px var(--secondaryColor),
                 1px -1px 1px var(--secondaryColor),

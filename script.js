@@ -10,12 +10,12 @@ const playBut = container.querySelector('.playBut')
 const text2 = container.querySelector('.text2')
 const animateColor = document.querySelector('.aniamteColor')
 const animateColor1 = document.querySelector('.aniamteColor1')
-const keyboardBut = container.querySelector('.keyboardBut')
+const loopBut = container.querySelector('.loopBut')
 const dot = container.querySelector('.dot')
 const deep = container.querySelector('.deep')
-const modeKeyboard = container.querySelector('.modeKeyboard')
+// const modeKeyboard = container.querySelector('.modeKeyboard')
+const audioLoop = document.querySelectorAll('audio')
 // const animateColor2 = document.querySelector('animate')
-
 const styles = getComputedStyle(document.documentElement)
 const varAccent1Light = String(styles.getPropertyValue('--accent1')).trim()
 const varAccent1Dark = String(styles.getPropertyValue('--accent1Dark')).trim()
@@ -38,6 +38,7 @@ let win = 0
 let varPrimaryColor = varPrimaryColorLight
 let varAccent1 = varAccent1Light
 let timer = 0
+let loopMode = 0
 
 let greetings = ['wow impressionnant', 'joli !', 'excellente mémoire', 'bravo', 'clap clap clap', 'tu vas battre mon score là', 'hop un niveau de plus', 'bien joué', 'niveau suivant !', 't\'es sur la bonne voie', 'continue comme ça', 'Bruno Simon le meilleur prof', 'champion' ,'t\'es le meilleur', 'c\'était facile', 'mémoire au top', 't\'es bien partis', 'encore un peu aller', 'un niveau de plus']
 
@@ -75,40 +76,66 @@ function butClick(but){
 	}
 }
 
-let keyboardMode = 0
+// the current loop button was basic intended to change the keyboard, 
+// the function works well but there are some points on which I am not satisfied so I disabled it, 
+// I would put it back later
 
-keyboardBut.addEventListener('click', function() {
-	keyboardMode++
+// let keyboardMode = 0
+
+// loopBut.addEventListener('click', function() {
+// 	keyboardMode++
+// 	for (i = 1; i <= nbButtons; i++) {
+// 		if(keyboardMode%2 != 0){
+// 			loopBut.classList.add('loopButActive')
+// 			dot.style.color = varAccent1
+// 			const changeKeys = container.querySelectorAll('.textBut')
+// 			const changeKeyboard = []
+// 			for (i = 0; i < changeKeys.length; i++) {
+// 				const searchObj = codeTable.find(search => search.nb == i+1 ).querty
+// 				changeKeyboard.push(searchObj)
+// 				changeKeys[i].textContent = changeKeyboard[i]
+// 			}
+// 		} else if (keyboardMode%2 != 1){
+// 			const changeKeys = container.querySelectorAll('.textBut')
+// 			const changeKeyboard = []
+// 			loopBut.classList.remove('loopButActive')
+// 			dot.style.color = '#5e5e5e'
+// 			for (i = 0; i < changeKeys.length; i++) {
+// 				const searchObj = codeTable.find(search => search.nb == i+1 ).azerty
+// 				changeKeyboard.push(searchObj)
+// 				changeKeys[i].textContent = changeKeyboard[i]
+// 			}
+// 		} else {
+// 			console.log(error);
+// 		}
+// 	}
+// })
+
+
+
+
+
+loopBut.addEventListener('click', function() {
+	loopMode++
 	for (i = 1; i <= nbButtons; i++) {
-		if(keyboardMode%2 != 0){
-			keyboardBut.classList.add('keyboardButActive')
+		if(loopMode%2 != 0){
+			loopBut.classList.add('loopButActive')
 			dot.style.color = varAccent1
-			const changeKeys = container.querySelectorAll('.textBut')
-			const changeKeyboard = []
-			for (i = 0; i < changeKeys.length; i++) {
-				const searchObj = codeTable.find(search => search.nb == i+1 ).querty
-				// console.log(searchObj);
-				changeKeyboard.push(searchObj)
-				changeKeys[i].textContent = changeKeyboard[i]
+			for(i = 0; i<audioLoop.length; i++)
+			{
+				// I will add animations for each loop as well as a bpm that the user chooses
+				audioLoop[i].loop = true
 			}
-			// modeKeyboard.textContent = 'QUERTY'
-		} else if (keyboardMode%2 != 1){
-			const changeKeys = container.querySelectorAll('.textBut')
-			const changeKeyboard = []
-			keyboardBut.classList.remove('keyboardButActive')
+		} else if (loopMode%2 != 1){
+			loopBut.classList.remove('loopButActive')
 			dot.style.color = '#5e5e5e'
-			for (i = 0; i < changeKeys.length; i++) {
-				const searchObj = codeTable.find(search => search.nb == i+1 ).azerty
-				// console.log(searchObj);
-				changeKeyboard.push(searchObj)
-				changeKeys[i].textContent = changeKeyboard[i]
-			}
-			// modeKeyboard.textContent = 'QUERTY'
-	
+			for(i = 0; i<audioLoop.length; i++)
+			{
+				audioLoop[i].loop = false
+			} 
 		} else {
 			console.log(error);
 		}
-		
 	}
 })
 
@@ -311,10 +338,12 @@ for (i = 0; i < arrow.length; i++) {
 			varPrimaryColor = varPrimaryColorDark
 			animateColor.setAttribute('values', varAccent1 + ';' + varPrimaryColor + ';' + varAccent1);
 			animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent1 + ';' + varPrimaryColor);
+			dot.style.display = 'none'
+			deep.style.display = 'none'
 			for (const but of button) {
 				but.style.pointerEvents = 'none'
 			}
-			if(keyboardMode%2 != 0){
+			if(loopMode%2 != 0){
 				dot.style.color = varAccent1
 			}
 		}
@@ -339,7 +368,10 @@ for (i = 0; i < arrow.length; i++) {
 			varPrimaryColor = varPrimaryColorLight
 			animateColor.setAttribute('values', varAccent1 + ';' + varPrimaryColor + ';' + varAccent1);
 			animateColor1.setAttribute('values', varPrimaryColor + ';' + varAccent1 + ';' + varPrimaryColor);
-			if(keyboardMode%2 != 0){
+			
+			dot.style.display = 'flex'
+			deep.style.display = 'flex'
+			if(loopMode%2 != 0){
 				dot.style.color = varAccent1
 			}
 		}
@@ -366,8 +398,9 @@ function changeKeyboard(mediaChange) {
 				text1.style.fontSize = '9.5px'
 			}
 		}
-		dot.style.display = 'none'
-		deep.style.display = 'none'
+		// these are remnants of the function to change the keyboard
+		// dot.style.display = 'none'
+		// deep.style.display = 'none'
 	} else {
 		for (i = 0; i < changeKeys.length; i++) {
 			mem.push (changeKeys[i].textContent)
@@ -375,6 +408,6 @@ function changeKeyboard(mediaChange) {
 			changeKeys[i].style.fontSize =  ''
 			text1.style.fontSize = '16px'
 		}
-		dot.style.display = 'flex'
-		deep.style.display = 'flex'
+		// dot.style.display = 'flex'
+		// deep.style.display = 'flex'
 }}
